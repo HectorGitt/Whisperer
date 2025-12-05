@@ -5,6 +5,7 @@ import { CategoryFilter } from '../components/CategoryFilter';
 import { BlurOnIdle } from '../components/BlurOnIdle';
 import { SettingsPanel } from '../components/SettingsPanel';
 import { useDebounce } from '../hooks/useDebounce';
+import { audioManager } from '../utils/AudioManager';
 import styles from './FeedView.module.css';
 
 interface FeedViewProps {
@@ -23,6 +24,19 @@ export function FeedView({ onArticleClick, scrollPosition, onScrollPositionChang
 
   // Sort articles by timestamp (newest first)
   const sortedArticles = [...filteredArticles].sort((a, b) => b.timestamp - a.timestamp);
+
+  // Play background music on feed view
+  useEffect(() => {
+    const randomAmbient = audioManager.getRandomAmbientSound();
+    console.log('FeedView: Playing background ambient:', randomAmbient);
+    audioManager.playSound(randomAmbient, true);
+    
+    // Stop background music when leaving feed
+    return () => {
+      console.log('FeedView: Stopping background music');
+      audioManager.stopAll();
+    };
+  }, []);
 
   // Apply debounced filter to actual filter state
   useEffect(() => {
