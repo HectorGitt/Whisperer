@@ -216,6 +216,58 @@ npm run test:a11y    # Run accessibility tests only
 npm run lint         # Run ESLint
 ```
 
+## 🐳 Docker Deployment
+
+### Using Docker Compose (Recommended)
+
+```bash
+# Build and start the container
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the container
+docker-compose down
+```
+
+The app will be available at `http://localhost:3000`
+
+### Using Docker directly
+
+```bash
+# Build the image
+docker build -t doom-scroll-reader .
+
+# Run the container
+docker run -d -p 3000:80 --name doom-scroll-reader doom-scroll-reader
+
+# View logs
+docker logs -f doom-scroll-reader
+
+# Stop and remove
+docker stop doom-scroll-reader
+docker rm doom-scroll-reader
+```
+
+### Production Deployment
+
+The Docker image uses:
+- **Multi-stage build** for optimized image size
+- **Nginx** as the web server
+- **Gzip compression** for faster loading
+- **Security headers** for protection
+- **Health checks** for monitoring
+- **Asset caching** for performance
+
+Deploy to any platform that supports Docker:
+- AWS ECS/Fargate
+- Google Cloud Run
+- Azure Container Instances
+- DigitalOcean App Platform
+- Heroku Container Registry
+- Self-hosted with Docker
+
 ## 🌐 Browser Support
 
 - Chrome/Edge 90+

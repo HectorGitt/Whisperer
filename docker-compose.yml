@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  doom-scroll-reader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: doom-scroll-reader
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    labels:
+      - "com.doom-scroll-reader.description=Horror story reader with CRT aesthetic"
+      - "com.doom-scroll-reader.version=1.0.0"
