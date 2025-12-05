@@ -8,9 +8,13 @@ yarn-error.log*
 dist
 build
 
-# Testing
+# Testing - exclude from Docker build
 coverage
 .nyc_output
+**/*.test.ts
+**/*.test.tsx
+**/test/**
+src/test/
 
 # Environment
 .env
