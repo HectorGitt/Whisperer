@@ -200,14 +200,13 @@ export function ArticleView({ articleId, onBack }: ArticleViewProps) {
         </header>
 
         <div className={styles.articleContent}>
-          <BlurOnIdle>
-            <div 
-              className={styles.content}
-              data-testid="article-content"
-            >
-              {article.content.split('\n\n').filter(p => p.trim()).map((paragraph, index) => (
+          <div 
+            className={styles.content}
+            data-testid="article-content"
+          >
+            {article.content.split('\n\n').filter(p => p.trim()).map((paragraph, index) => (
+              <BlurOnIdle key={index}>
                 <p 
-                  key={index}
                   onClick={() => handleParagraphClick(index)}
                   style={{ 
                     cursor: narratorEnabled ? 'pointer' : 'default',
@@ -217,9 +216,9 @@ export function ArticleView({ articleId, onBack }: ArticleViewProps) {
                 >
                   {paragraph}
                 </p>
-              ))}
-            </div>
-          </BlurOnIdle>
+              </BlurOnIdle>
+            ))}
+          </div>
         </div>
       </article>
     </div>
