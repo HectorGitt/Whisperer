@@ -14,7 +14,7 @@ A horror-themed story reader with an immersive retro CRT monitor aesthetic. Expe
 - Authentic scanline effects across the entire viewport
 - Subtle screen jitter animation mimicking CRT instability
 - Monochromatic green phosphor glow
-- Blur-on-idle text that clears on hover for focused reading
+- **Per-paragraph blur** - Each paragraph blurs individually when idle, hover to reveal for suspenseful reading
 - Fixed-width terminal fonts
 
 ### 👻 Spooky Effects
@@ -90,9 +90,10 @@ On first launch, the app automatically seeds with 11 horror stories including:
 1. Browse the feed of horror stories
 2. Click any story to read the full content
 3. Background music and narrator start automatically (after user interaction)
-4. Random spooky effects appear every 30-90 seconds
-5. Click the NARRATE button to pause/resume narration
-6. Use the back button to return to the feed
+4. **Hover over each paragraph** to reveal the text - creates suspenseful reading experience
+5. Random spooky effects appear every 30-90 seconds
+6. Click the NARRATE button to pause/resume narration
+7. Use the back button to return to the feed
 
 ### Narrator Controls
 - **Auto-Start**: Narrator is enabled by default and begins reading automatically

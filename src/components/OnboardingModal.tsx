@@ -68,6 +68,7 @@ export function OnboardingModal() {
             <div>
               <h3>CRT Aesthetic</h3>
               <p>Retro monitor effects with scanlines and screen jitter</p>
+              <small>Hover over each paragraph to reveal the text</small>
             </div>
           </div>
 
