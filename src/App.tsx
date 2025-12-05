@@ -10,6 +10,7 @@ import { FloatingGhost } from './components/FloatingGhost';
 import { GlitchEffect } from './components/GlitchEffect';
 import { JumpScare } from './components/JumpScare';
 import { ShadowFigure } from './components/ShadowFigure';
+import { OnboardingModal } from './components/OnboardingModal';
 import { FeedView } from './views/FeedView';
 import { ArticleView } from './views/ArticleView';
 import { CuratorView } from './views/CuratorView';
@@ -97,6 +98,7 @@ function App() {
       <AccessibilityProvider>
         <NarratorProvider>
           <ArticleProvider>
+            <OnboardingModal />
             <Scanlines />
             <ScreenJitter>
             <div className="app-container">

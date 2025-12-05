@@ -61,16 +61,17 @@ export function ArticleView({ articleId, onBack }: ArticleViewProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [article?.id]);
 
-  // Stop narration when leaving the article (but not background music)
+  // Stop narration only when leaving the article (navigating away)
   useEffect(() => {
     return () => {
-      if (isSpeaking || isNarrating) {
-        console.log('ArticleView: Stopping narrator');
-        stop();
-        setIsNarrating(false);
-      }
+      // Only stop if we're actually leaving (article ID changed or unmounting)
+      console.log('ArticleView: Component unmounting, stopping narrator');
+      stop();
+      setIsNarrating(false);
     };
-  }, [isSpeaking, isNarrating, stop]);
+    // Empty dependency array - only runs on unmount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // If article not found, show error state
   if (!article) {

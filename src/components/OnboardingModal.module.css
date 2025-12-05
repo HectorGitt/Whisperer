@@ -1,0 +1,212 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.modal {
+  background: #0a0a0a;
+  border: 2px solid #00ff00;
+  border-radius: 4px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.3),
+    inset 0 0 20px rgba(0, 255, 0, 0.1);
+  animation: slideIn 0.5s ease-out;
+}
+
+.header {
+  background: rgba(0, 255, 0, 0.1);
+  padding: 1.5rem;
+  border-bottom: 1px solid #00ff00;
+  text-align: center;
+}
+
+.title {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  animation: flicker 2s infinite;
+}
+
+.content {
+  padding: 2rem;
+}
+
+.feature {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+}
+
+.icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.feature h3 {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem 0;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.feature p {
+  color: #00cc00;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.feature small {
+  color: #009900;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+.warning {
+  background: rgba(255, 165, 0, 0.1);
+  border: 1px solid #ff8800;
+  border-radius: 4px;
+  padding: 1rem;
+  color: #ffaa00;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.warning strong {
+  color: #ff8800;
+}
+
+.closeButton {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 255, 0, 0.1);
+  border: 2px solid #00ff00;
+  border-radius: 0 0 4px 4px;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.closeButton:hover {
+  background: rgba(0, 255, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+  transform: scale(1.02);
+}
+
+.closeButton:active {
+  transform: scale(0.98);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+  75% {
+    opacity: 0.98;
+  }
+}
+
+/* Scrollbar styling */
+.modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 4px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+  background: #00cc00;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .modal,
+  .title {
+    animation: none;
+  }
+  
+  .closeButton:hover {
+    transform: none;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .feature {
+    gap: 0.75rem;
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+  }
+}

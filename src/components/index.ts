@@ -10,3 +10,4 @@ export { GlitchEffect } from './GlitchEffect';
 export { JumpScare } from './JumpScare';
 export { ShadowFigure } from './ShadowFigure';
 export { SettingsPanel } from './SettingsPanel';
+export { OnboardingModal } from './OnboardingModal';
