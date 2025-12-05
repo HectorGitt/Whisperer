@@ -1,7 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { audioManager } from '../utils/AudioManager';
 import { getJumpScareSound } from '../utils/soundMapping';
-import { useNarrator } from '../contexts/NarratorContext';
 import styles from './JumpScare.module.css';
 
 interface JumpScareProps {
@@ -20,8 +19,6 @@ const JUMP_SCARE_IMAGES = [
 ];
 
 export function JumpScare({ onComplete, imageUrl }: JumpScareProps) {
-  const { pause, resume } = useNarrator();
-  
   // Select random image on mount
   const selectedImage = useMemo(() => {
     if (imageUrl) return imageUrl;
@@ -36,25 +33,19 @@ export function JumpScare({ onComplete, imageUrl }: JumpScareProps) {
   useEffect(() => {
     console.log('JumpScare: Attempting to play sound:', selectedSound);
     
-    // Pause narrator during jump scare
-    pause();
-    
+    // Don't pause narrator - let it continue during jump scare
     // Play jump scare sound
     audioManager.playSound(selectedSound);
 
     // Quick jump scare - 2 seconds
     const timer = setTimeout(() => {
-      // Resume narrator after jump scare
-      resume();
       onComplete?.();
     }, 2000);
     
     return () => {
       clearTimeout(timer);
-      // Resume narrator if component unmounts early
-      resume();
     };
-  }, [onComplete, selectedSound, pause, resume]);
+  }, [onComplete, selectedSound]);
   
   return (
     <div className={styles.jumpScare} data-testid="jump-scare">

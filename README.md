@@ -33,12 +33,11 @@ Random atmospheric effects that appear during your reading session:
 - **Smart Audio Management** - Respects browser autoplay policies, pauses narrator during effects
 
 ### 🎙️ Narrator System
-- Enable in settings to have stories read aloud
-- Automatically narrates article titles
-- Manual button to narrate full article content
-- Atmospheric voice configuration (pitch: 0.7, rate: 0.8)
-- Pauses during spooky effects with sound
-- Speaks random spooky phrases when enabled
+- **Enabled by default** - Automatically starts reading stories when you open them
+- Reads full article content with atmospheric voice (pitch: 0.7, rate: 0.8)
+- Toggle on/off with the NARRATE button or in settings
+- Continues narrating even during jump scares and spooky effects
+- Uses Web Speech API with event-based state tracking for accurate playback
 
 ### ♿ Accessibility
 - Full keyboard navigation support
@@ -80,23 +79,26 @@ On first launch, the app automatically seeds with 11 horror stories including:
 - The Infinite Loop
 - And more creepy tales...
 
-**Important:** Click anywhere on the page after loading to enable audio (browser autoplay policy requirement).
+**Important:** 
+- Click anywhere on the page after loading to enable audio (browser autoplay policy requirement)
+- The narrator is enabled by default and will start reading automatically
+- All articles are horror-themed with atmospheric background music
 
 ## 🎮 Usage
 
 ### Reading Stories
 1. Browse the feed of horror stories
 2. Click any story to read the full content
-3. Background music starts automatically (after user interaction)
+3. Background music and narrator start automatically (after user interaction)
 4. Random spooky effects appear every 30-90 seconds
-5. Use the back button to return to the feed
+5. Click the NARRATE button to pause/resume narration
+6. Use the back button to return to the feed
 
-### Enabling Narrator
-1. Click the settings icon (⚙️) in the top right
-2. Toggle "Narrator" to ON
-3. The narrator will greet you with a spooky phrase
-4. Article titles are automatically narrated when viewing stories
-5. Click the "NARRATE" button in an article to hear the full content
+### Narrator Controls
+- **Auto-Start**: Narrator is enabled by default and begins reading automatically
+- **Toggle**: Click the "NARRATE" button (🔊) in any article to stop/start narration
+- **Disable**: Go to settings (⚙️) and toggle "Narrator" to OFF to disable completely
+- **Note**: Narrator continues during jump scares and visual effects for uninterrupted storytelling
 
 ### Accessibility Settings
 - **Reduce Motion** - Disables screen jitter and reduces animations
@@ -241,6 +243,7 @@ Audio assets are royalty-free or used under appropriate licenses.
 - Audio may not play until user interacts with the page (browser autoplay policy)
 - Some browsers may not support all Web Speech API voices
 - Performance may vary on older devices with many visual effects active
+- Narrator is enabled by default - disable in settings if you prefer silent reading
 
 ## 🤝 Contributing
 

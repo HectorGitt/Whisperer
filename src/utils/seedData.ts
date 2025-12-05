@@ -251,6 +251,106 @@ The group fled, but the damage was done. They'd become part of the broadcast. No
 And if you watch for more than 90 seconds, you'll see yourself join them.`,
     source: 'Signal Intrusion Archive',
     category: 'spooky'
+  },
+  {
+    title: 'The Doll in the Attic',
+    preview: '',
+    content: `When Sarah inherited her grandmother's house, she found a porcelain doll in the attic. It was beautiful, with glass eyes and a Victorian dress. She brought it downstairs and placed it on the mantle.
+
+That night, she woke to the sound of footsteps. Small footsteps. Pattering across the hardwood floor. She turned on the light, but nothing was there. The doll sat on the mantle, exactly where she'd left it. Except its head was turned, facing her bedroom door.
+
+The next morning, Sarah found the doll in the kitchen. She was certain she'd left it on the mantle. She put it back, but the following day, it was in her bedroom. Then the bathroom. Then sitting at the foot of her bed, watching her sleep.
+
+Sarah tried to throw it away, but it always came back. She buried it in the backyard—it appeared on her pillow. She drove it to a dumpster across town—it was waiting in her car when she returned. She even tried burning it, but the flames wouldn't catch. The doll just sat there in the fireplace, smiling.
+
+One night, Sarah woke to find the doll sitting on her chest, its face inches from hers. The glass eyes weren't empty anymore. They were looking at her. Really looking. And then it whispered, in a voice like breaking glass: "Grandmother wants her house back."
+
+Sarah moved out the next day. The house has been empty ever since. But sometimes, people walking past at night report seeing a light in the attic window. And a small figure, standing there, watching the street. Waiting for someone new to take the doll home.`,
+    source: 'r/NoSleep',
+    category: 'spooky',
+    author: 'u/VictorianHorror'
+  },
+  {
+    title: 'The Hitchhiker',
+    preview: '',
+    content: `The hitchhiker appeared on Route 66 every night at midnight. Always the same spot, always the same tattered coat, always the same desperate wave for a ride. Dozens of drivers had picked him up over the years. None of them ever made it to their destination.
+
+The pattern was always the same. The hitchhiker would get in, thank the driver, and sit in silence. After a few miles, he'd start talking. About the accident. About how he died on this road fifty years ago. About how he's been trying to get home ever since.
+
+Then he'd ask the driver to pull over. "This is where it happened," he'd say, pointing to a curve in the road. "This is where I died." And then he'd vanish, leaving only a wet spot on the seat and the smell of decay.
+
+But that's not the scary part. The scary part is what happens next. Every driver who picked up the hitchhiker died within a week. Car accidents, all of them. All at the same curve in the road. All at midnight.
+
+The locals know better than to drive Route 66 after dark. But tourists don't. And the hitchhiker is always waiting. Always waving. Always desperate for a ride.
+
+If you ever find yourself on Route 66 at midnight, and you see a figure on the side of the road, don't stop. Don't even slow down. Because the hitchhiker isn't looking for a ride home. He's looking for company. And once you pick him up, you'll be taking the same journey he did. Over and over. Forever.`,
+    source: 'Urban Legends',
+    category: 'spooky',
+    author: 'Anonymous'
+  },
+  {
+    title: 'The Basement Door',
+    preview: '',
+    content: `Every house has that one door you don't open. In my childhood home, it was the basement door. My parents never explained why. They just said, "Don't open it. Ever."
+
+I was a curious kid, but something about that door kept me away. It wasn't locked. There was no sign, no warning. Just an overwhelming sense of dread whenever I got close. Like something on the other side was waiting. Watching. Hoping I'd turn the handle.
+
+I moved away for college and forgot about it. But when my parents died, I inherited the house. I had to go back. Had to deal with their belongings. Had to face that door again.
+
+I stood in front of it for an hour, hand on the knob, trying to work up the courage. Finally, I turned it. The door swung open. Stairs led down into darkness. I flipped the light switch. Nothing happened. I got a flashlight and started descending.
+
+The basement was empty. Just concrete walls and a dirt floor. Nothing scary. Nothing unusual. I laughed at myself for being afraid. Then I saw it. In the far corner. Another door.
+
+This one was different. Old wood, iron hinges, no handle. And carved into it, in letters that looked burned into the wood: "DON'T OPEN. EVER."
+
+I left. Sold the house the next week. Didn't tell the buyers about the doors. I probably should have. But three months later, I got a call. The new owners had disappeared. The police found the house empty. Both doors wide open. And on the wall, written in something dark and wet: "THEY OPENED IT."
+
+I don't know what's behind that second door. I don't want to know. But sometimes, late at night, I wonder if it's still open. And if whatever was behind it is still down there. Or if it's out here now. With us.`,
+    source: 'Creepypasta Wiki',
+    category: 'spooky',
+    author: 'u/BasementDweller'
+  },
+  {
+    title: 'The Photograph',
+    preview: '',
+    content: `I found an old photograph at an estate sale. Black and white, dated 1952. It showed a family of four standing in front of a house. Mother, father, two children. All smiling. All normal. Except for one thing.
+
+In the background, barely visible in the window of the house, was a face. Not one of the family members. Someone else. Something else. Pale, with hollow eyes and a too-wide smile. Watching them.
+
+I bought the photo for a dollar. Thought it was interesting. Creepy, but interesting. I hung it in my hallway. That's when things started happening.
+
+The first night, I heard scratching. Like fingernails on glass. I checked every window. Nothing. The second night, I saw movement in my peripheral vision. A pale face, there and gone. The third night, I woke up to find all my photos turned to face the wall. Except the one from the estate sale. That one was fine.
+
+I looked at it more closely. The face in the window was clearer now. Closer to the glass. And the family in the photo—they weren't smiling anymore. They looked terrified. Like they were trying to run but couldn't move.
+
+I tried to throw the photo away. It appeared back on my wall. I tried to burn it. The flames wouldn't touch it. I tried to bury it. I found it on my pillow the next morning.
+
+Then I noticed something else. In the reflection of the glass frame, I could see my room. And in that reflection, standing behind me, was the pale face from the photo. Watching. Smiling. Waiting.
+
+I don't look at the photo anymore. I don't look at any reflections. Because I know it's there. Always there. In every reflection, every window, every mirror. Watching. Getting closer. And one day, I'll be in the photo too. Trapped. Smiling. While something else takes my place.`,
+    source: 'r/LetsNotMeet',
+    category: 'spooky',
+    author: 'u/FramedHorror'
+  },
+  {
+    title: 'The Elevator Game',
+    preview: '',
+    content: `There's an urban legend about an elevator game. If you follow the rules exactly, you can travel to another world. A world that looks like ours, but isn't. A world where you're completely alone. Where the sky is red and nothing is quite right.
+
+The rules are simple. Enter an elevator in a building with at least ten floors. Press the buttons in a specific sequence: 4, 2, 6, 2, 10. On the tenth floor, a woman will enter. Don't look at her. Don't speak to her. Press 5. If the elevator goes up instead of down, you've succeeded. You're going to the other world.
+
+My friend tried it. She followed the rules perfectly. The woman entered on the tenth floor. My friend didn't look. Didn't speak. Pressed 5. The elevator went up. The doors opened on a floor that shouldn't exist.
+
+She stepped out into a hallway that looked like her building, but wrong. The lights were dimmer. The walls were the wrong color. And when she looked out the window, the city was empty. No people. No cars. No sound. Just red sky and silence.
+
+She tried to go back. Pressed the elevator button. Nothing happened. She tried the stairs. They went down forever, never reaching the ground. She tried breaking a window. The glass wouldn't break. She screamed for help. No one answered.
+
+That was three months ago. We haven't seen her since. But sometimes, late at night, I get texts from her number. They're always the same: "I'm still here. Don't play the game. She's still with me."
+
+I don't know what happened to my friend. I don't know if she's alive or dead or something in between. But I know one thing: I'll never take an elevator alone again. Because sometimes, when I'm in one, I hear a voice behind me. A woman's voice. Whispering: "Would you like to play a game?"`,
+    source: 'Asian Urban Legends',
+    category: 'spooky',
+    author: 'Anonymous'
   }
 ];
 
@@ -306,4 +406,30 @@ export function clearSeedData(): void {
 export function reseedDemoContent(): void {
   clearSeedData();
   seedDemoContent();
+}
+
+/**
+ * Removes any tech articles from storage and replaces with spooky content
+ * Call this on app initialization to clean up old data
+ */
+export function cleanupTechArticles(): void {
+  try {
+    const stored = localStorage.getItem('doom-scroll-articles');
+    if (!stored) return;
+    
+    const data = JSON.parse(stored);
+    if (!data.articles || !Array.isArray(data.articles)) return;
+    
+    // Filter out any tech articles
+    const spookyOnly = data.articles.filter((article: any) => article.category === 'spooky');
+    
+    // If we removed any articles, update storage
+    if (spookyOnly.length !== data.articles.length) {
+      console.log(`Removed ${data.articles.length - spookyOnly.length} tech articles`);
+      data.articles = spookyOnly;
+      localStorage.setItem('doom-scroll-articles', JSON.stringify(data));
+    }
+  } catch (error) {
+    console.error('Failed to cleanup tech articles:', error);
+  }
 }

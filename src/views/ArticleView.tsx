@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useArticles } from '../contexts/ArticleContext';
 import { useNarrator } from '../contexts/NarratorContext';
 import { BlurOnIdle } from '../components/BlurOnIdle';
-import { useArticleAudio } from '../hooks/useArticleAudio';
 import { audioManager } from '../utils/AudioManager';
 import styles from './ArticleView.module.css';
 
@@ -15,16 +14,10 @@ export function ArticleView({ articleId, onBack }: ArticleViewProps) {
   const { articles, deleteArticle } = useArticles();
   const { narrateArticleTitle, speak, stop, enabled: narratorEnabled, isSpeaking } = useNarrator();
   const [isNarrating, setIsNarrating] = useState(false);
+  const [startParagraph, setStartParagraph] = useState(0);
   
   // Find the article by ID
   const article = articles.find(a => a.id === articleId);
-  
-  // Play contextual audio for spooky articles (hook handles it automatically)
-  useArticleAudio({
-    text: article?.content || '',
-    category: article?.category,
-    enabled: true,
-  });
   
   // Play background ambient for all articles (all are spooky now)
   useEffect(() => {
@@ -43,22 +36,25 @@ export function ArticleView({ articleId, onBack }: ArticleViewProps) {
     };
   }, [article?.id]);
   
-  // Narrate article title for all articles (only once per article)
+  // Auto-narrate full article content when enabled (only once per article)
   useEffect(() => {
     if (!article) return;
     
-    if (narratorEnabled && !isNarrating) {
-      console.log('ArticleView: Will narrate article title:', article.title);
+    if (narratorEnabled && !isNarrating && !isSpeaking) {
+      console.log('ArticleView: Auto-starting narration for:', article.title);
       // Small delay to let page load and voices to load
       const timer = setTimeout(() => {
-        narrateArticleTitle(article.title);
-      }, 1000);
+        const fullText = `${article.title}. ${article.content}`;
+        speak(fullText);
+        setIsNarrating(true);
+      }, 1500);
       
       return () => clearTimeout(timer);
     } else {
-      console.log('ArticleView: Skipping narration', { 
+      console.log('ArticleView: Skipping auto-narration', { 
         narratorEnabled, 
-        isNarrating 
+        isNarrating,
+        isSpeaking
       });
     }
     // Only depend on article.id to run once per article
@@ -106,14 +102,37 @@ export function ArticleView({ articleId, onBack }: ArticleViewProps) {
     }
 
     if (isSpeaking || isNarrating) {
+      // Stop/pause narration
       stop();
       setIsNarrating(false);
     } else {
-      // Narrate the full article content
+      // Start/resume narration from beginning
       const fullText = `${article.title}. ${article.content}`;
       speak(fullText);
       setIsNarrating(true);
+      setStartParagraph(0);
     }
+  };
+
+  const handleParagraphClick = (paragraphIndex: number) => {
+    if (!narratorEnabled) {
+      alert('Narrator is disabled. Enable it in settings to hear articles read aloud.');
+      return;
+    }
+
+    // Stop current narration
+    stop();
+    
+    // Get paragraphs
+    const paragraphs = article.content.split('\n\n').filter(p => p.trim());
+    
+    // Create text from selected paragraph onwards
+    const textFromParagraph = paragraphs.slice(paragraphIndex).join('. ');
+    
+    // Start narrating from this paragraph
+    speak(textFromParagraph);
+    setIsNarrating(true);
+    setStartParagraph(paragraphIndex);
   };
 
   return (
@@ -185,7 +204,19 @@ export function ArticleView({ articleId, onBack }: ArticleViewProps) {
               className={styles.content}
               data-testid="article-content"
             >
-              {article.content}
+              {article.content.split('\n\n').filter(p => p.trim()).map((paragraph, index) => (
+                <p 
+                  key={index}
+                  onClick={() => handleParagraphClick(index)}
+                  style={{ 
+                    cursor: narratorEnabled ? 'pointer' : 'default',
+                    marginBottom: '1em'
+                  }}
+                  title={narratorEnabled ? 'Click to start narration from here' : ''}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </BlurOnIdle>
         </div>

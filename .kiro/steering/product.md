@@ -1,22 +1,25 @@
 # Product Overview
 
-The Doom Scroll Reader is a curated news and blog reader application with a distinctive retro CRT monitor aesthetic. The app combines modern web technologies with nostalgic visual effects to create an immersive reading experience.
+The Doom Scroll Reader is a horror story reader with an immersive retro CRT monitor aesthetic. The app combines atmospheric audio, spooky visual effects, and automatic narration to create a fully immersive horror reading experience.
 
 ## Key Features
 
-- Article feed with tech and spooky content categories
-- Individual article reading view
+- Horror story feed with creepypasta and scary tales
+- Individual article reading view with auto-narration
 - Curator view for content management
-- Retro CRT visual effects (scanlines, screen jitter, glow)
+- Retro CRT visual effects (scanlines, screen jitter, phosphor glow)
 - Random spooky effects (spiders, ghosts, glitches, jumpscares, shadow figures)
 - Blur-on-idle effect for enhanced atmosphere
-- Audio narration support for articles
+- **Randomized background music** - 11 atmospheric tracks that loop during reading
+- **Auto-narration** - Enabled by default, reads stories aloud with creepy voice
+- **Jump scare sounds** - 6 short, impactful audio effects
 - Comprehensive accessibility settings
 - Hash-based routing for navigation
 
 ## User Experience Goals
 
-- Create an atmospheric, nostalgic reading experience
-- Maintain accessibility without compromising visual effects
-- Provide smooth navigation between feed, articles, and curator views
-- Balance spooky effects with usability
+- Create a fully immersive horror reading experience
+- Automatic audio and narration for hands-free storytelling
+- Maintain accessibility without compromising atmospheric effects
+- Provide smooth navigation between feed and articles
+- Balance frightening effects with usability and user control

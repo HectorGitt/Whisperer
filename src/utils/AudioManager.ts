@@ -100,21 +100,35 @@ export class AudioManager {
     }
     
     try {
-      // Preload if not already loaded
-      if (!this.audioElements.has(soundFile)) {
-        this.preloadSound(soundFile);
+      // Check if this sound is already playing
+      let audio = this.audioElements.get(soundFile);
+      
+      if (audio && !audio.paused && audio.currentTime > 0) {
+        // Already playing, don't interrupt
+        console.log('Sound already playing:', soundFile);
+        return;
       }
       
-      const audio = this.audioElements.get(soundFile);
+      // Preload if not already loaded
+      if (!audio) {
+        this.preloadSound(soundFile);
+        audio = this.audioElements.get(soundFile);
+      }
+      
       if (!audio) return;
       
       audio.loop = loop;
-      audio.currentTime = 0; // Reset to start
+      
+      // Only reset if not currently playing
+      if (audio.paused || audio.currentTime === 0) {
+        audio.currentTime = 0;
+      }
+      
       await audio.play();
       console.log('Playing sound:', soundFile);
     } catch (error) {
-      // Silently fail if autoplay is still blocked
-      if (error instanceof Error && error.name !== 'NotAllowedError') {
+      // Silently fail if autoplay is still blocked or interrupted
+      if (error instanceof Error && error.name !== 'NotAllowedError' && error.name !== 'AbortError') {
         console.warn('Failed to play sound:', soundFile, error);
       }
     }

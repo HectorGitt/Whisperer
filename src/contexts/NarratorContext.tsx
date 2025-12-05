@@ -22,17 +22,22 @@ interface NarratorProviderProps {
 }
 
 export function NarratorProvider({ children }: NarratorProviderProps) {
-  const [enabled, setEnabledState] = useState(false);
+  const [enabled, setEnabledState] = useState(true); // Enabled by default
   const [isSupported] = useState(() => 'speechSynthesis' in window);
   const [isSpeaking, setIsSpeaking] = useState(false);
   
   useEffect(() => {
-    // Load saved preference
+    // Load saved preference, default to true if not set
     const saved = localStorage.getItem('narrator-enabled');
     if (saved !== null) {
       const isEnabled = saved === 'true';
       setEnabledState(isEnabled);
       narrator.setEnabled(isEnabled);
+    } else {
+      // First time - enable by default and save preference
+      setEnabledState(true);
+      narrator.setEnabled(true);
+      localStorage.setItem('narrator-enabled', 'true');
     }
   }, []);
   
@@ -49,16 +54,39 @@ export function NarratorProvider({ children }: NarratorProviderProps) {
   
   const speak = (text: string) => {
     if (enabled && isSupported) {
-      narrator.speak(text);
       setIsSpeaking(true);
       
-      // Estimate speaking duration and auto-update state
-      const wordCount = text.split(/\s+/).length;
-      const estimatedDuration = (wordCount / 150) * 60 * 1000; // 150 words per minute
+      // Create utterance with event handlers
+      const utterance = new SpeechSynthesisUtterance(text);
       
-      setTimeout(() => {
+      // Set voice and parameters
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length > 0) {
+        const preferredVoice = voices.find(
+          (voice) =>
+            voice.name.toLowerCase().includes('male') ||
+            voice.name.toLowerCase().includes('daniel') ||
+            voice.name.toLowerCase().includes('alex')
+        );
+        utterance.voice = preferredVoice || voices[0];
+      }
+      
+      utterance.rate = 0.8;
+      utterance.pitch = 0.7;
+      utterance.volume = 0.8;
+      
+      // Update state when speech ends
+      utterance.onend = () => {
         setIsSpeaking(false);
-      }, estimatedDuration);
+      };
+      
+      utterance.onerror = () => {
+        setIsSpeaking(false);
+      };
+      
+      // Cancel any ongoing speech and speak
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
     }
   };
   
@@ -77,16 +105,51 @@ export function NarratorProvider({ children }: NarratorProviderProps) {
   
   const narrateArticleTitle = (title: string) => {
     if (enabled && isSupported) {
-      narrator.narrateArticleTitle(title);
       setIsSpeaking(true);
       
-      // Estimate speaking duration for title
-      const wordCount = title.split(/\s+/).length;
-      const estimatedDuration = (wordCount / 150) * 60 * 1000; // 150 words per minute
+      const intros = [
+        "Now reading...",
+        "Behold...",
+        "Witness...",
+        "Prepare yourself for...",
+        "Enter the world of...",
+        "Dare to read...",
+      ];
       
-      setTimeout(() => {
+      const intro = intros[Math.floor(Math.random() * intros.length)];
+      const fullText = `${intro} ${title}`;
+      
+      // Create utterance with event handlers
+      const utterance = new SpeechSynthesisUtterance(fullText);
+      
+      // Set voice and parameters
+      const voices = window.speechSynthesis.getVoices();
+      if (voices.length > 0) {
+        const preferredVoice = voices.find(
+          (voice) =>
+            voice.name.toLowerCase().includes('male') ||
+            voice.name.toLowerCase().includes('daniel') ||
+            voice.name.toLowerCase().includes('alex')
+        );
+        utterance.voice = preferredVoice || voices[0];
+      }
+      
+      utterance.rate = 0.8;
+      utterance.pitch = 0.7;
+      utterance.volume = 0.8;
+      
+      // Update state when speech ends
+      utterance.onend = () => {
         setIsSpeaking(false);
-      }, estimatedDuration);
+      };
+      
+      utterance.onerror = () => {
+        setIsSpeaking(false);
+      };
+      
+      // Cancel any ongoing speech and speak
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
     }
   };
   
