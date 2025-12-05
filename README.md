@@ -1,8 +1,8 @@
-# 🎃 The Doom Scroll Reader
+# 👻 Whisperer
 
-> *"Welcome... to the darkness..."*
+> *"Listen... to the whispers in the dark..."*
 
-A horror-themed story reader with an immersive retro CRT monitor aesthetic. Experience creepypasta and horror stories with atmospheric audio, spooky visual effects, and an optional narrator that reads tales in a haunting voice.
+A horror story reader with an immersive retro CRT monitor aesthetic. Experience creepypasta and horror stories with atmospheric audio, spooky visual effects, and an automatic narrator that whispers tales in a haunting voice.
 
 ![CRT Monitor Aesthetic](https://img.shields.io/badge/aesthetic-CRT%20Monitor-green?style=for-the-badge)
 ![Horror Theme](https://img.shields.io/badge/theme-Horror-red?style=for-the-badge)
@@ -58,7 +58,7 @@ Random atmospheric effects that appear during your reading session:
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd doom-scroll-reader
+cd whisperer
 
 # Install dependencies
 npm install
@@ -237,17 +237,17 @@ The app will be available at `http://localhost:3000`
 
 ```bash
 # Build the image
-docker build -t doom-scroll-reader .
+docker build -t whisperer .
 
 # Run the container
-docker run -d -p 3000:80 --name doom-scroll-reader doom-scroll-reader
+docker run -d -p 3000:80 --name whisperer whisperer
 
 # View logs
-docker logs -f doom-scroll-reader
+docker logs -f whisperer
 
 # Stop and remove
-docker stop doom-scroll-reader
-docker rm doom-scroll-reader
+docker stop whisperer
+docker rm whisperer
 ```
 
 ### Production Deployment

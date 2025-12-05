@@ -1,4 +1,4 @@
-# Multi-stage build for The Doom Scroll Reader
+# Multi-stage build for Whisperer
 
 # Stage 1: Build the application
 FROM node:18-alpine AS builder

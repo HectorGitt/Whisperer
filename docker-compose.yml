@@ -1,11 +1,11 @@
 version: '3.8'
 
 services:
-  doom-scroll-reader:
+  whisperer:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: doom-scroll-reader
+    container_name: whisperer
     ports:
       - "3000:80"
     restart: unless-stopped
@@ -18,5 +18,5 @@ services:
       retries: 3
       start_period: 5s
     labels:
-      - "com.doom-scroll-reader.description=Horror story reader with CRT aesthetic"
-      - "com.doom-scroll-reader.version=1.0.0"
+      - "com.whisperer.description=Horror story reader with CRT aesthetic"
+      - "com.whisperer.version=1.0.0"

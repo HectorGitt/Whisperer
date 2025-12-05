@@ -52,10 +52,10 @@ export function FeedView({ onArticleClick, scrollPosition, onScrollPositionChang
     <div className={styles.feedView} data-testid="feed-view">
       <header className={styles.header}>
         <BlurOnIdle>
-          <h1 className={styles.title}>THE DOOM SCROLL</h1>
+          <h1 className={styles.title}>WHISPERER</h1>
         </BlurOnIdle>
         <BlurOnIdle>
-          <p className={styles.subtitle}>Curated tech articles and spooky stories</p>
+          <p className={styles.subtitle}>Horror stories from the darkness</p>
         </BlurOnIdle>
         <div className={styles.headerButtons}>
           {onNavigateToCurator && (

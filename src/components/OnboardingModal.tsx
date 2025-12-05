@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './OnboardingModal.module.css';
 
-const ONBOARDING_KEY = 'doom-scroll-onboarding-seen';
+const ONBOARDING_KEY = 'whisperer-onboarding-seen';
 
 export function OnboardingModal() {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,10 +31,10 @@ export function OnboardingModal() {
 
         <div className={styles.content}>
           <div className={styles.feature}>
-            <span className={styles.icon}>🎃</span>
+            <span className={styles.icon}>👻</span>
             <div>
               <h3>Horror Stories</h3>
-              <p>16 curated creepypasta and scary tales await you</p>
+              <p>Curated creepypasta and scary tales await you</p>
             </div>
           </div>
 
