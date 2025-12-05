@@ -212,7 +212,6 @@ export function ArticleView({ articleId, onBack }: ArticleViewProps) {
                     cursor: narratorEnabled ? 'pointer' : 'default',
                     marginBottom: '1em'
                   }}
-                  title={narratorEnabled ? 'Click to start narration from here' : ''}
                 >
                   {paragraph}
                 </p>
