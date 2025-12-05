@@ -24,9 +24,7 @@ interface ArticleProviderProps {
 export function ArticleProvider({ children, repository }: ArticleProviderProps) {
   const [repo] = useState(() => repository || new ArticleRepository());
   const [articles, setArticles] = useState<Article[]>([]);
-  const [filterState, setFilterState] = useState<FilterState>({
-    category: 'all',
-  });
+  const [filterState, setFilterState] = useState<FilterState>({});
 
   const refreshArticles = () => {
     const allArticles = repo.getAll();
@@ -39,10 +37,6 @@ export function ArticleProvider({ children, repository }: ArticleProviderProps) 
 
   const filteredArticles = React.useMemo(() => {
     let filtered = articles;
-
-    if (filterState.category !== 'all') {
-      filtered = filtered.filter(article => article.category === filterState.category);
-    }
 
     if (filterState.searchQuery) {
       const query = filterState.searchQuery.toLowerCase();

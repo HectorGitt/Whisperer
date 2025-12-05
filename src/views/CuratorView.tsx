@@ -13,7 +13,6 @@ interface FormData {
   title: string;
   content: string;
   source: string;
-  category: 'tech' | 'spooky';
 }
 
 interface FormErrors {
@@ -30,7 +29,6 @@ export function CuratorView({ onNavigateToFeed }: CuratorViewProps) {
     title: '',
     content: '',
     source: '',
-    category: 'tech',
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -97,7 +95,7 @@ export function CuratorView({ onNavigateToFeed }: CuratorViewProps) {
         title: formData.title,
         content: formData.content,
         source: formData.source,
-        category: formData.category,
+        category: 'spooky',
         preview: formData.content.substring(0, 150),
       });
 
@@ -224,34 +222,6 @@ export function CuratorView({ onNavigateToFeed }: CuratorViewProps) {
               role="alert"
             >
               {errors.source}
-            </span>
-          )}
-        </div>
-
-        <div className={styles.formGroup}>
-          <label htmlFor="category" className={styles.label}>
-            <BlurOnIdle>Category *</BlurOnIdle>
-          </label>
-          <select
-            id="category"
-            name="category"
-            value={formData.category}
-            onChange={handleInputChange}
-            className={`${styles.select} ${errors.category ? styles.inputError : ''}`}
-            aria-invalid={!!errors.category}
-            aria-describedby={errors.category ? 'category-error' : undefined}
-            data-testid="category-select"
-          >
-            <option value="tech">Tech</option>
-            <option value="spooky">Spooky</option>
-          </select>
-          {errors.category && (
-            <span 
-              id="category-error" 
-              className={styles.errorMessage}
-              role="alert"
-            >
-              {errors.category}
             </span>
           )}
         </div>

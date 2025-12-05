@@ -18,7 +18,6 @@ export interface AccessibilitySettings {
 }
 
 export interface FilterState {
-  category: 'spooky'; // Only spooky category exists
   searchQuery?: string;
 }
 

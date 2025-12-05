@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useArticles } from '../contexts/ArticleContext';
 import { ArticleCard } from '../components/ArticleCard';
-import { CategoryFilter } from '../components/CategoryFilter';
 import { BlurOnIdle } from '../components/BlurOnIdle';
 import { SettingsPanel } from '../components/SettingsPanel';
-import { useDebounce } from '../hooks/useDebounce';
 import { audioManager } from '../utils/AudioManager';
 import styles from './FeedView.module.css';
 
@@ -16,11 +14,9 @@ interface FeedViewProps {
 }
 
 export function FeedView({ onArticleClick, scrollPosition, onScrollPositionChange, onNavigateToCurator }: FeedViewProps) {
-  const { filteredArticles, filterState, setFilterState } = useArticles();
+  const { filteredArticles } = useArticles();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  const [pendingFilter, setPendingFilter] = useState(filterState.category);
-  const debouncedFilter = useDebounce(pendingFilter, 150);
 
   // Sort articles by timestamp (newest first)
   const sortedArticles = [...filteredArticles].sort((a, b) => b.timestamp - a.timestamp);
@@ -38,11 +34,6 @@ export function FeedView({ onArticleClick, scrollPosition, onScrollPositionChang
     };
   }, []);
 
-  // Apply debounced filter to actual filter state
-  useEffect(() => {
-    setFilterState({ ...filterState, category: debouncedFilter });
-  }, [debouncedFilter]);
-
   // Restore scroll position when component mounts
   useEffect(() => {
     if (scrollPosition !== undefined && scrollContainerRef.current) {
@@ -55,10 +46,6 @@ export function FeedView({ onArticleClick, scrollPosition, onScrollPositionChang
     if (scrollContainerRef.current && onScrollPositionChange) {
       onScrollPositionChange(scrollContainerRef.current.scrollTop);
     }
-  };
-
-  const handleFilterChange = (category: 'all' | 'tech' | 'spooky') => {
-    setPendingFilter(category);
   };
 
   return (
@@ -95,11 +82,6 @@ export function FeedView({ onArticleClick, scrollPosition, onScrollPositionChang
           </button>
         </div>
       </header>
-
-      <CategoryFilter
-        currentFilter={filterState.category}
-        onFilterChange={handleFilterChange}
-      />
 
       <div
         className={styles.articleList}
