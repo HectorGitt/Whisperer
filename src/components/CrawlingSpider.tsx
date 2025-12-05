@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
+import { audioManager } from '../utils/AudioManager';
 import styles from './CrawlingSpider.module.css';
 
 interface CrawlingSpiderProps {
@@ -11,6 +12,12 @@ type Edge = 'top' | 'right' | 'bottom' | 'left';
 const SPIDER_IMAGES = [
   '/media/images/transparent-gif-spider.gif',
   '/media/images/spider-3d.gif',
+];
+
+// Spider/crawling sounds
+const SPIDER_SOUNDS = [
+  '/media/sounds/Fangrcrawlecave1.mid',
+  '/media/sounds/troll-idle-noises.ogg',
 ];
 
 export function CrawlingSpider({ onComplete }: CrawlingSpiderProps) {
@@ -32,14 +39,21 @@ export function CrawlingSpider({ onComplete }: CrawlingSpiderProps) {
     return SPIDER_IMAGES[Math.floor(Math.random() * SPIDER_IMAGES.length)];
   }, []);
   
+  const selectedSound = useMemo(() => {
+    return SPIDER_SOUNDS[Math.floor(Math.random() * SPIDER_SOUNDS.length)];
+  }, []);
+  
   useEffect(() => {
+    // Play spider sound
+    audioManager.playSound(selectedSound);
+    
     // Animation duration is 8 seconds
     const timer = setTimeout(() => {
       onComplete?.();
     }, 8000);
     
     return () => clearTimeout(timer);
-  }, [onComplete]);
+  }, [onComplete, selectedSound]);
   
   const getStartStyle = (): React.CSSProperties => {
     switch (startEdge) {

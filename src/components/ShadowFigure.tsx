@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
+import { audioManager } from '../utils/AudioManager';
 import styles from './ShadowFigure.module.css';
 
 interface ShadowFigureProps {
@@ -16,6 +17,13 @@ const SHADOW_IMAGES = [
   '/media/images/spruki.gif',
 ];
 
+// Shadow/monster sounds
+const SHADOW_SOUNDS = [
+  '/media/sounds/troll-roars.ogg',
+  '/media/sounds/scrapped-troll-sounds.ogg',
+  '/media/sounds/scaryhighpitchedghost.ogg',
+];
+
 export function ShadowFigure({ onComplete }: ShadowFigureProps) {
   const [side] = useState<'left' | 'right'>(() => 
     Math.random() > 0.5 ? 'left' : 'right'
@@ -25,14 +33,21 @@ export function ShadowFigure({ onComplete }: ShadowFigureProps) {
     return SHADOW_IMAGES[Math.floor(Math.random() * SHADOW_IMAGES.length)];
   }, []);
   
+  const selectedSound = useMemo(() => {
+    return SHADOW_SOUNDS[Math.floor(Math.random() * SHADOW_SOUNDS.length)];
+  }, []);
+  
   useEffect(() => {
+    // Play shadow sound
+    audioManager.playSound(selectedSound);
+    
     // Shadow figure - 5 seconds
     const timer = setTimeout(() => {
       onComplete?.();
     }, 5000);
     
     return () => clearTimeout(timer);
-  }, [onComplete]);
+  }, [onComplete, selectedSound]);
   
   return (
     <div 

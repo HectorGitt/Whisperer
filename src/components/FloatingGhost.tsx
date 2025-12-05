@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
+import { audioManager } from '../utils/AudioManager';
 import styles from './FloatingGhost.module.css';
 
 interface FloatingGhostProps {
@@ -11,6 +12,13 @@ const GHOST_IMAGES = [
   '/media/images/scary-rooms-low-detailed.gif',
 ];
 
+// Ghost-specific sounds
+const GHOST_SOUNDS = [
+  '/media/sounds/ghost_1.flac',
+  '/media/sounds/ghost_2.flac',
+  '/media/sounds/scaryhighpitchedghost.ogg',
+];
+
 export function FloatingGhost({ onComplete }: FloatingGhostProps) {
   const [startX] = useState(() => Math.random() * 80 + 10); // 10-90%
   const [drift] = useState(() => (Math.random() - 0.5) * 30); // -15 to +15%
@@ -19,14 +27,21 @@ export function FloatingGhost({ onComplete }: FloatingGhostProps) {
     return GHOST_IMAGES[Math.floor(Math.random() * GHOST_IMAGES.length)];
   }, []);
   
+  const selectedSound = useMemo(() => {
+    return GHOST_SOUNDS[Math.floor(Math.random() * GHOST_SOUNDS.length)];
+  }, []);
+  
   useEffect(() => {
+    // Play ghost sound
+    audioManager.playSound(selectedSound);
+    
     // Animation duration is 10 seconds
     const timer = setTimeout(() => {
       onComplete?.();
     }, 10000);
     
     return () => clearTimeout(timer);
-  }, [onComplete]);
+  }, [onComplete, selectedSound]);
   
   return (
     <div
