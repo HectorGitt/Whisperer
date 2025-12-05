@@ -1,0 +1,262 @@
+.articleView {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--crt-dark, #0a0a0a);
+  color: var(--crt-green, #00ff00);
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--crt-green, #00ff00);
+  color: var(--crt-green, #00ff00);
+  font-family: 'Courier New', Consolas, Monaco, monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px var(--crt-green, #00ff00);
+}
+
+.narrateButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--crt-green, #00ff00);
+  color: var(--crt-green, #00ff00);
+  font-family: 'Courier New', Consolas, Monaco, monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px var(--crt-green, #00ff00);
+}
+
+.narrateButton:hover,
+.narrateButton:focus {
+  background-color: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 10px var(--crt-green, #00ff00);
+  outline: none;
+}
+
+.narrateButton.narrating {
+  border-color: #ffaa00;
+  color: #ffaa00;
+  text-shadow: 0 0 5px #ffaa00;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.narrateButton.narrating:hover,
+.narrateButton.narrating:focus {
+  background-color: rgba(255, 170, 0, 0.1);
+  box-shadow: 0 0 10px #ffaa00;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.narrateIcon {
+  font-size: 1.2rem;
+}
+
+.narrateText {
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.deleteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid #ff0000;
+  color: #ff0000;
+  font-family: 'Courier New', Consolas, Monaco, monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px #ff0000;
+}
+
+.deleteButton:hover,
+.deleteButton:focus {
+  background-color: rgba(255, 0, 0, 0.1);
+  box-shadow: 0 0 10px #ff0000;
+  outline: none;
+}
+
+.deleteIcon {
+  font-size: 1.2rem;
+}
+
+.deleteText {
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.backButton:hover,
+.backButton:focus {
+  background-color: rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 10px var(--crt-green, #00ff00);
+  outline: none;
+}
+
+.backButton:focus-visible {
+  outline: 2px solid var(--crt-green, #00ff00);
+  outline-offset: 2px;
+}
+
+.backIcon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.backText {
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.article {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.articleHeader {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.articleTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  font-family: 'Courier New', Consolas, Monaco, monospace;
+  text-shadow: 0 0 10px var(--crt-green, #00ff00);
+}
+
+.articleMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-family: 'Courier New', Consolas, Monaco, monospace;
+}
+
+.source {
+  font-weight: bold;
+}
+
+.separator {
+  opacity: 0.5;
+}
+
+.timestamp {
+  font-style: italic;
+}
+
+.category {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--crt-green, #00ff00);
+  border-radius: 2px;
+}
+
+.articleContent {
+  margin-top: 2rem;
+}
+
+.content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  font-family: 'Courier New', Consolas, Monaco, monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.errorState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+}
+
+.errorMessage {
+  font-size: 1.5rem;
+  font-family: 'Courier New', Consolas, Monaco, monospace;
+  text-shadow: 0 0 10px var(--crt-green, #00ff00);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .articleView {
+    padding: 1rem;
+  }
+
+  .topBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actionButtons {
+    justify-content: space-between;
+  }
+
+  .articleTitle {
+    font-size: 1.8rem;
+  }
+
+  .articleMeta {
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+  }
+
+  .content {
+    font-size: 1rem;
+  }
+
+  .backButton,
+  .narrateButton,
+  .deleteButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Accessibility - reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .backButton {
+    transition: none;
+  }
+}

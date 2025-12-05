@@ -1,0 +1,7 @@
+.container {
+  transition: filter var(--transition-duration, 300ms) ease;
+}
+
+.container.blurred {
+  filter: blur(var(--blur-amount, 4px));
+}

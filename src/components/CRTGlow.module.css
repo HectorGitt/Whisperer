@@ -1,0 +1,31 @@
+.glow {
+  color: var(--crt-green, #00ff00);
+  text-shadow: 
+    0 0 5px var(--crt-green, #00ff00),
+    0 0 10px var(--crt-green, #00ff00);
+}
+
+.glow.low {
+  text-shadow: 
+    0 0 3px var(--crt-green, #00ff00);
+}
+
+.glow.high {
+  text-shadow: 
+    0 0 5px var(--crt-green, #00ff00),
+    0 0 10px var(--crt-green, #00ff00),
+    0 0 15px var(--crt-green, #00ff00);
+}
+
+:root {
+  --crt-green: #00ff00;
+  --crt-amber: #ffbf00;
+  --crt-dark: #0a0a0a;
+}
+
+[data-theme="amber"] .glow {
+  color: var(--crt-amber);
+  text-shadow: 
+    0 0 5px var(--crt-amber),
+    0 0 10px var(--crt-amber);
+}

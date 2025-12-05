@@ -1,0 +1,208 @@
+/* CRT Theme Variables */
+:root {
+  /* Color Scheme */
+  --crt-green: #00ff00;
+  --crt-green-dim: #00cc00;
+  --crt-green-bright: #00ff41;
+  --crt-amber: #ffbf00;
+  --crt-amber-dim: #cc9900;
+  --crt-amber-bright: #ffd700;
+  --crt-dark: #0a0a0a;
+  --crt-dark-lighter: #1a1a1a;
+  
+  /* Active theme colors (default to green) */
+  --crt-primary: var(--crt-green);
+  --crt-primary-dim: var(--crt-green-dim);
+  --crt-primary-bright: var(--crt-green-bright);
+  
+  /* Typography */
+  font-family: 'Courier New', Consolas, Monaco, 'Lucida Console', monospace;
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 16px;
+
+  /* Color application */
+  color: var(--crt-primary);
+  background-color: var(--crt-dark);
+
+  /* Rendering optimizations */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Amber theme variant */
+[data-theme="amber"] {
+  --crt-primary: var(--crt-amber);
+  --crt-primary-dim: var(--crt-amber-dim);
+  --crt-primary-bright: var(--crt-amber-bright);
+}
+
+/* Global resets and base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--crt-dark);
+  color: var(--crt-primary);
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Courier New', Consolas, Monaco, 'Lucida Console', monospace;
+  font-weight: 700;
+  color: var(--crt-primary-bright);
+  text-shadow: 
+    0 0 5px var(--crt-primary),
+    0 0 10px var(--crt-primary);
+}
+
+h1 {
+  font-size: 2.5em;
+  line-height: 1.2;
+  margin: 0.5em 0;
+}
+
+h2 {
+  font-size: 2em;
+  line-height: 1.3;
+  margin: 0.5em 0;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.4;
+  margin: 0.5em 0;
+}
+
+p {
+  margin: 1em 0;
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  color: var(--crt-primary-bright);
+  text-decoration: none;
+  border-bottom: 1px solid var(--crt-primary-dim);
+  transition: all 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--crt-primary-bright);
+  border-bottom-color: var(--crt-primary-bright);
+  text-shadow: 0 0 8px var(--crt-primary);
+}
+
+/* Buttons */
+button {
+  font-family: 'Courier New', Consolas, Monaco, 'Lucida Console', monospace;
+  font-size: 1em;
+  font-weight: 500;
+  padding: 0.6em 1.2em;
+  border: 2px solid var(--crt-primary);
+  background-color: var(--crt-dark-lighter);
+  color: var(--crt-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+button:hover,
+button:focus {
+  background-color: var(--crt-primary);
+  color: var(--crt-dark);
+  box-shadow: 
+    0 0 10px var(--crt-primary),
+    inset 0 0 10px var(--crt-primary);
+  outline: none;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--crt-primary-bright);
+  outline-offset: 2px;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: var(--crt-primary-dim);
+  color: var(--crt-primary-dim);
+}
+
+button:disabled:hover {
+  background-color: var(--crt-dark-lighter);
+  color: var(--crt-primary-dim);
+  box-shadow: none;
+}
+
+/* Input fields */
+input,
+textarea,
+select {
+  font-family: 'Courier New', Consolas, Monaco, 'Lucida Console', monospace;
+  font-size: 1em;
+  padding: 0.5em;
+  border: 2px solid var(--crt-primary-dim);
+  background-color: var(--crt-dark-lighter);
+  color: var(--crt-primary);
+  transition: all 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--crt-primary-bright);
+  box-shadow: 0 0 8px var(--crt-primary);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--crt-primary);
+  color: var(--crt-dark);
+}
+
+::-moz-selection {
+  background-color: var(--crt-primary);
+  color: var(--crt-dark);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--crt-dark);
+  border-left: 1px solid var(--crt-primary-dim);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--crt-primary-dim);
+  border: 2px solid var(--crt-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--crt-primary);
+}
+
+/* Focus indicators for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--crt-primary-bright);
+  outline-offset: 2px;
+}
