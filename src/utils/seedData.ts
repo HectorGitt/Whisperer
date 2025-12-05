@@ -2,7 +2,7 @@
 
 import { ArticleRepository } from './ArticleRepository';
 
-const SEED_FLAG_KEY = 'doom-scroll-seeded';
+const SEED_FLAG_KEY = 'whisperer-seeded';
 
 interface SeedArticle {
   title: string;

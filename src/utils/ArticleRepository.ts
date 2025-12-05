@@ -4,7 +4,7 @@ import type { Article, ArticleStore } from '../types';
 import { StorageError } from './errors';
 import { validateArticle } from './validation';
 
-const STORAGE_KEY = 'doom-scroll-articles';
+const STORAGE_KEY = 'whisperer-articles';
 
 export class ArticleRepository {
   private lastTimestamp: number = 0;
