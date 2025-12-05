@@ -1,7 +1,8 @@
-import { useState, FormEvent } from 'react';
+import { useState, useRef, type FormEvent } from 'react';
 import { useArticles } from '../contexts/ArticleContext';
 import { BlurOnIdle } from '../components/BlurOnIdle';
 import { ValidationError } from '../utils/errors';
+import { parseFile, isValidFileType, ACCEPTED_FILE_TYPES } from '../utils/fileParser';
 import styles from './CuratorView.module.css';
 
 interface CuratorViewProps {
@@ -33,6 +34,8 @@ export function CuratorView({ onNavigateToFeed }: CuratorViewProps) {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -42,6 +45,44 @@ export function CuratorView({ onNavigateToFeed }: CuratorViewProps) {
     // Clear error for this field when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!isValidFileType(file)) {
+      setErrors({
+        general: 'Invalid file type. Please upload a PDF, TXT, or Markdown file.',
+      });
+      return;
+    }
+
+    setIsUploading(true);
+    setErrors({});
+
+    try {
+      const parsed = await parseFile(file);
+      
+      // Update form with parsed content
+      setFormData(prev => ({
+        ...prev,
+        title: parsed.title || prev.title,
+        content: parsed.content,
+        source: prev.source || file.name,
+      }));
+    } catch (error) {
+      setErrors({
+        general: `Failed to parse file: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      });
+    } finally {
+      setIsUploading(false);
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
     }
   };
 
@@ -113,6 +154,27 @@ export function CuratorView({ onNavigateToFeed }: CuratorViewProps) {
             </BlurOnIdle>
           </div>
         )}
+
+        <div className={styles.formGroup}>
+          <label htmlFor="file-upload" className={styles.label}>
+            <BlurOnIdle>Upload File (PDF, TXT, Markdown)</BlurOnIdle>
+          </label>
+          <input
+            ref={fileInputRef}
+            type="file"
+            id="file-upload"
+            accept={ACCEPTED_FILE_TYPES}
+            onChange={handleFileUpload}
+            className={styles.fileInput}
+            disabled={isUploading}
+            data-testid="file-upload"
+          />
+          {isUploading && (
+            <span className={styles.uploadingMessage}>
+              Parsing file...
+            </span>
+          )}
+        </div>
 
         <div className={styles.formGroup}>
           <label htmlFor="title" className={styles.label}>

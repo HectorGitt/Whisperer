@@ -10,6 +10,12 @@ export default defineConfig({
       generateScopedName: '[name]__[local]___[hash:base64:5]',
     },
   },
+  optimizeDeps: {
+    include: ['pdfjs-dist'],
+  },
+  worker: {
+    format: 'es',
+  },
   // @ts-expect-error - vitest config
   test: {
     globals: true,
